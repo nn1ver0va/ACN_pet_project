@@ -57,7 +57,7 @@
 **Как воспроизвести:**
 
 1. Исходные данные уже включены в `data/raw/acn_sessions_raw.csv` - их можно использовать сразу.
-Если нужно получить данные заново «с нуля» (например, за другой период), то данные выгружаются через Power Query (Excel) прямым запросом к API ACN-Data (`https://ev.caltech.edu/api/v1/sessions/<site_id>`), с пагинацией через `_links.next.href` (Data → Get Data → From Other Sources → Blank Query; Home - Advanced Editor). Я использовала данный способ, поскольку прямое скачивание JSON с сайта было нестабильным и скачанные файлы обрывались.
+Если нужно получить данные заново «с нуля» (например, за другой период), то данные можно выгрузить через Power Query (Excel), используя М-код из `power_query/get_acn_data.pq` прямым запросом к API ACN-Data (`https://ev.caltech.edu/api/v1/sessions/<site_id>`), с пагинацией через `_links.next.href` (Data → Get Data → From Other Sources → Blank Query; Home - Advanced Editor). Я использовала данный способ, поскольку прямое скачивание JSON с сайта было нестабильным и скачанные файлы обрывались.
 2. Создай таблицу и загрузи данные - выполни `sql/01_create_table.sql` в PostgreSQL (через pgAdmin)
 3. Проверь целостность данных - `sql/02_data_checks.sql` (дубли, количество строк/станций)
 4. Запусти аналитические запросы по порядку:
